@@ -1,18 +1,18 @@
 import "dotenv/config";
 import express, { NextFunction, Request, Response } from "express";
-import PostModel from "./models/post";
+import postsRouter from "./routes/Posts";
 
 const app = express();
+app.use(express.json());
 
-app.get("/", async (req, res) => {
-  try {
-    const posts = await PostModel.find().exec();
-    res.status(200).json(posts);
-  } catch (error) {}
+app.use("/api/posts", postsRouter);
+
+// error handler => used to throw error for all endpoints that are not valid
+app.use((req, res, next) => {
+  next(Error("Endpoint not found"));
 });
 
 // Setting up the error handler
-
 app.use((error: unknown, req: Request, res: Response, next: NextFunction) => {
   console.error(error);
   let errorMsg = "An unknown error occured";
