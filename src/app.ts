@@ -6,7 +6,7 @@ import createHttpError, { isHttpError } from "http-errors";
 
 const app = express();
 app.use(express.json());
-
+// app.use(cors);
 app.use(morgan("dev"));
 
 app.use("/api/posts", postsRouter);
