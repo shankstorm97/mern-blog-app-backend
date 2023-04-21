@@ -31,8 +31,6 @@ const express_1 = __importDefault(require("express"));
 const Posts_1 = __importDefault(require("./routes/Posts"));
 const morgan_1 = __importDefault(require("morgan"));
 const http_errors_1 = __importStar(require("http-errors"));
-const mongoose_1 = __importDefault(require("mongoose"));
-const validateEnv_1 = __importDefault(require("./utils/validateEnv"));
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
 // app.use(cors);
@@ -41,15 +39,6 @@ app.get("/", (req, res) => {
     res.send("Hello to the mern-blog-app");
 });
 app.use("/api/posts", Posts_1.default);
-mongoose_1.default
-    .connect(validateEnv_1.default.MONGO_CONNECTION_STRING)
-    .then(() => {
-    console.log("Mongoose connected");
-    app.listen(validateEnv_1.default.PORT, () => {
-        console.log("port runnn");
-    });
-})
-    .catch(console.error);
 // error handler => used to throw error for all endpoints that are not valid
 app.use((req, res, next) => {
     next((0, http_errors_1.default)(404, "Endpoint not found"));
