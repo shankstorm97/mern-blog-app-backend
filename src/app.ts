@@ -4,6 +4,8 @@ import postsRouter from "./routes/Posts";
 import morgan from "morgan";
 import createHttpError, { isHttpError } from "http-errors";
 
+import mongoose from "mongoose";
+import env from "./utils/validateEnv";
 const app = express();
 app.use(express.json());
 // app.use(cors);
@@ -31,5 +33,16 @@ app.use((error: unknown, req: Request, res: Response, next: NextFunction) => {
   }
   res.status(statusCode).json({ error: errorMessage });
 });
+
+mongoose
+  .connect(env.MONGO_CONNECTION_STRING)
+  .then(() => {
+    console.log("Mongoose connected");
+
+    app.listen(env.PORT, () => {
+      console.log("port runnn");
+    });
+  })
+  .catch(console.error);
 
 export default app;

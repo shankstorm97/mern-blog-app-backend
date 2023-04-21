@@ -31,6 +31,8 @@ const express_1 = __importDefault(require("express"));
 const Posts_1 = __importDefault(require("./routes/Posts"));
 const morgan_1 = __importDefault(require("morgan"));
 const http_errors_1 = __importStar(require("http-errors"));
+const mongoose_1 = __importDefault(require("mongoose"));
+const validateEnv_1 = __importDefault(require("./utils/validateEnv"));
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
 // app.use(cors);
@@ -55,4 +57,13 @@ app.use((error, req, res, next) => {
     }
     res.status(statusCode).json({ error: errorMessage });
 });
+mongoose_1.default
+    .connect(validateEnv_1.default.MONGO_CONNECTION_STRING)
+    .then(() => {
+    console.log("Mongoose connected");
+    app.listen(validateEnv_1.default.PORT, () => {
+        console.log("port runnn");
+    });
+})
+    .catch(console.error);
 exports.default = app;
