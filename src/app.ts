@@ -13,6 +13,7 @@ app.use(morgan("dev"));
 app.get("/", (req, res) => {
   res.send("Hello to the mern-blog-app");
 });
+
 app.use("/api/posts", postsRouter);
 
 // error handler => used to throw error for all endpoints that are not valid

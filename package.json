@@ -8,7 +8,7 @@
   },
   "scripts": {
     "add-build": "git add dist",
-    "start": "nodemon src/app.ts",
+    "start": "node src/server.ts",
     "build": "rimraf dist && tsc",
     "ts.check": "tsc --project tsconfig.json",
     "lint": "eslint . --ext .ts",
