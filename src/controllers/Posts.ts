@@ -1,10 +1,21 @@
 import { RequestHandler } from "express";
 import PostModel from "../models/post";
+import mongoose from "mongoose";
 
 export const getPosts: RequestHandler = async (req, res, next) => {
   try {
     const posts = await PostModel.find().exec();
     res.status(200).json(posts);
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const getPost: RequestHandler = async (req, res, next) => {
+  const postId = req.params.postId;
+  try {
+    const post = await PostModel.findById(postId).exec();
+    res.status(200).json(post);
   } catch (error) {
     next(error);
   }
