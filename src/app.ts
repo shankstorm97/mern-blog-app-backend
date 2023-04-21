@@ -6,7 +6,6 @@ import createHttpError, { isHttpError } from "http-errors";
 import mongoose from "mongoose";
 import env from "./utils/validateEnv";
 
-const app = express();
 mongoose
   .connect(env.MONGO_CONNECTION_STRING)
   .then(() => {
@@ -17,6 +16,8 @@ mongoose
     });
   })
   .catch(console.error);
+
+const app = express();
 
 app.use(express.json());
 
