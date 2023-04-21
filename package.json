@@ -2,13 +2,13 @@
   "name": "mern-app",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "app.js",
   "engines": {
     "node": "18.x"
   },
   "scripts": {
     "add-build": "git add dist",
-    "start": "node src/server.ts",
+    "start": "node dist/app.js",
     "build": "rimraf dist && tsc",
     "ts.check": "tsc --project tsconfig.json",
     "lint": "eslint . --ext .ts",

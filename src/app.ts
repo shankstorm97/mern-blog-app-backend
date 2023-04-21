@@ -5,7 +5,6 @@ import morgan from "morgan";
 import createHttpError, { isHttpError } from "http-errors";
 import mongoose from "mongoose";
 import env from "./utils/validateEnv";
-var cors = require("cors");
 
 const app = express();
 mongoose
@@ -20,7 +19,7 @@ mongoose
   .catch(console.error);
 
 app.use(express.json());
-app.use(cors());
+
 app.use(morgan("dev"));
 
 app.get("/", (req, res) => {

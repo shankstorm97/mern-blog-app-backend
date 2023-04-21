@@ -33,7 +33,6 @@ const morgan_1 = __importDefault(require("morgan"));
 const http_errors_1 = __importStar(require("http-errors"));
 const mongoose_1 = __importDefault(require("mongoose"));
 const validateEnv_1 = __importDefault(require("./utils/validateEnv"));
-var cors = require("cors");
 const app = (0, express_1.default)();
 mongoose_1.default
     .connect(validateEnv_1.default.MONGO_CONNECTION_STRING)
@@ -45,7 +44,6 @@ mongoose_1.default
 })
     .catch(console.error);
 app.use(express_1.default.json());
-app.use(cors());
 app.use((0, morgan_1.default)("dev"));
 app.get("/", (req, res) => {
     res.send("Hello to the mern-blog-app");
