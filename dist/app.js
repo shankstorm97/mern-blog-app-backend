@@ -35,6 +35,9 @@ const app = (0, express_1.default)();
 app.use(express_1.default.json());
 // app.use(cors);
 app.use((0, morgan_1.default)("dev"));
+app.get("/", (req, res) => {
+    res.send("Hello to the mern-blog-app");
+});
 app.use("/api/posts", Posts_1.default);
 // error handler => used to throw error for all endpoints that are not valid
 app.use((req, res, next) => {

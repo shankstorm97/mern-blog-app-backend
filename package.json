@@ -7,10 +7,10 @@
     "node": "18.x"
   },
   "scripts": {
+    "add-build": "git add dist",
     "start": "nodemon src/app.ts",
     "build": "rimraf dist && tsc",
     "ts.check": "tsc --project tsconfig.json",
-    "add-build": "git add dist",
     "lint": "eslint . --ext .ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
