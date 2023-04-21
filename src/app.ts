@@ -16,6 +16,17 @@ app.get("/", (req, res) => {
 });
 app.use("/api/posts", postsRouter);
 
+mongoose
+  .connect(env.MONGO_CONNECTION_STRING)
+  .then(() => {
+    console.log("Mongoose connected");
+
+    app.listen(env.PORT, () => {
+      console.log("port runnn");
+    });
+  })
+  .catch(console.error);
+
 // error handler => used to throw error for all endpoints that are not valid
 app.use((req, res, next) => {
   next(createHttpError(404, "Endpoint not found"));
@@ -33,16 +44,5 @@ app.use((error: unknown, req: Request, res: Response, next: NextFunction) => {
   }
   res.status(statusCode).json({ error: errorMessage });
 });
-
-mongoose
-  .connect(env.MONGO_CONNECTION_STRING)
-  .then(() => {
-    console.log("Mongoose connected");
-
-    app.listen(env.PORT, () => {
-      console.log("port runnn");
-    });
-  })
-  .catch(console.error);
 
 export default app;
