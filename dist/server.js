@@ -7,8 +7,7 @@ const app_1 = __importDefault(require("./app"));
 const mongoose_1 = __importDefault(require("mongoose"));
 const validateEnv_1 = __importDefault(require("./utils/validateEnv"));
 mongoose_1.default
-    // .connect(env.MONGO_CONNECTION_STRING)
-    .connect("mongodb+srv://prabhdeepsinngh:p52z9mvSdBGJLoRe@mern-blog.fb5ptu7.mongodb.net/Apphole?retryWrites=true&w=majority")
+    .connect(validateEnv_1.default.MONGO_CONNECTION_STRING)
     .then(() => {
     console.log("Mongoose connected");
     app_1.default.listen(validateEnv_1.default.PORT, () => {

@@ -37,6 +37,9 @@ app.use((0, morgan_1.default)("dev"));
 app.get("/", (req, res) => {
     res.send("Hello to the mern-blog-app");
 });
+app.get("/api/owner", (req, res) => {
+    res.status(200).json("This endpoint is working properly.");
+});
 app.use("/api/posts", Posts_1.default);
 // error handler => used to throw error for all endpoints that are not valid
 app.use((req, res, next) => {

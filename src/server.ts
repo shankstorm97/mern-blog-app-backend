@@ -3,10 +3,7 @@ import mongoose from "mongoose";
 import env from "./utils/validateEnv";
 
 mongoose
-  // .connect(env.MONGO_CONNECTION_STRING)
-  .connect(
-    "mongodb+srv://prabhdeepsinngh:p52z9mvSdBGJLoRe@mern-blog.fb5ptu7.mongodb.net/Apphole?retryWrites=true&w=majority"
-  )
+  .connect(env.MONGO_CONNECTION_STRING)
   .then(() => {
     console.log("Mongoose connected");
 

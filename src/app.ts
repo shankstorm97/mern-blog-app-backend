@@ -13,6 +13,9 @@ app.use(morgan("dev"));
 app.get("/", (req, res) => {
   res.send("Hello to the mern-blog-app");
 });
+app.get("/api/owner", (req, res) => {
+  res.status(200).json("This endpoint is working properly.");
+});
 
 app.use("/api/posts", postsRouter);
 

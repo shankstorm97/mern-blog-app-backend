@@ -8,11 +8,10 @@
   },
   "scripts": {
     "add-build": "git add dist",
-    "start": "nodemon src/server.ts",
-    "build": "rimraf dist && tsc",
     "ts.check": "tsc --project tsconfig.json",
     "lint": "eslint . --ext .ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "rimraf dist && tsc",
+    "start": "node src/server.ts"
   },
   "keywords": [],
   "author": "",
