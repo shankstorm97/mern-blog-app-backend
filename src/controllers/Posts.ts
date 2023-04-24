@@ -125,6 +125,7 @@ export const deletePost: RequestHandler = async (req, res, next) => {
     }
 
     await PostModel.findByIdAndRemove(postId).exec();
+    res.sendStatus(200);
   } catch (error) {
     next(error);
   }

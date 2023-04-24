@@ -103,6 +103,7 @@ const deletePost = (req, res, next) => __awaiter(void 0, void 0, void 0, functio
             throw (0, http_errors_1.default)(400, "Invalid Post Id");
         }
         yield post_1.default.findByIdAndRemove(postId).exec();
+        res.sendStatus(200);
     }
     catch (error) {
         next(error);
