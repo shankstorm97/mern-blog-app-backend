@@ -123,8 +123,8 @@ export const deletePost: RequestHandler = async (req, res, next) => {
     if (!mongoose.isValidObjectId) {
       throw createHttpError(400, "Invalid Post Id");
     }
-    PostModel.findByIdAndDelete(postId);
-    res.sendStatus(200);
+
+    await PostModel.findByIdAndRemove(postId).exec();
   } catch (error) {
     next(error);
   }

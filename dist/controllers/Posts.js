@@ -102,8 +102,7 @@ const deletePost = (req, res, next) => __awaiter(void 0, void 0, void 0, functio
         if (!mongoose_1.default.isValidObjectId) {
             throw (0, http_errors_1.default)(400, "Invalid Post Id");
         }
-        post_1.default.findByIdAndDelete(postId);
-        res.sendStatus(200);
+        yield post_1.default.findByIdAndRemove(postId).exec();
     }
     catch (error) {
         next(error);

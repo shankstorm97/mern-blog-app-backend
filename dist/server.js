@@ -9,9 +9,9 @@ const validateEnv_1 = __importDefault(require("./utils/validateEnv"));
 mongoose_1.default
     .connect(validateEnv_1.default.MONGO_CONNECTION_STRING)
     .then(() => {
-    console.log("Mongoose connected");
+    console.log("Mongoose client connected");
     app_1.default.listen(validateEnv_1.default.PORT, () => {
-        console.log("port runnn");
+        console.log("Server is running on port: 5001");
     });
 })
     .catch(console.error);
